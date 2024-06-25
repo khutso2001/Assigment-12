@@ -5,7 +5,7 @@
 }
 .done, .unfulfilled{
     border: 1px solid gray;
-    width: 400px;
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,14 +28,37 @@
 }
 
 .unfulfilled-task, .done-task{
-    border: 1px solid gray;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 550px;
 }
-.unfulfilled-task p{
+.unfulfilled-task p, .done-task p{
     border: 1px solid gray;
     padding: 20px;
-    width: 330px;
+    width: 400px;
+    border-radius: 10px;
+
+}
+.unfulfilled-task, .done-task{
+    display: flex;
+    flex-direction: row;
+}
+.unfulfilled-task button,.done-task button{
+    padding: 24px;
+    color: white;
+    background-color: green;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.done-task button{
+    padding: 24px;
+    color: white;
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
