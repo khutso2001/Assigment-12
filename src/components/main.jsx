@@ -57,7 +57,50 @@ class Mian extends Component {
       unfulfilledTasks: [...this.state.unfulfilledTasks, undo],
     });
   };
+  componentDidMount() {
+    setInterval(() => {
+      this.setState((prev) => ({
+        unfulfilledTasks: [
+          { task: "create React project with component did mount ", id: 1 },
+          { task: "create Other project with component did mount", id: 2 },
+        ],
+      }));
+    }, 2000);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      nextState.inputValue !== this.state.inputValue ||
+      nextState.unfulfilledTasks.length !==
+        this.state.unfulfilledTasks.length ||
+      nextState.completeTasks.length !== this.state.completeTasks.length
+    ) {
+      return true;
+    }
+
+    for (let i = 0; i < nextState.unfulfilledTasks.length; i++) {
+      if (
+        nextState.unfulfilledTasks[i].id !==
+          this.state.unfulfilledTasks[i].id ||
+        nextState.unfulfilledTasks[i].task !==
+          this.state.unfulfilledTasks[i].task
+      ) {
+        return true;
+      }
+    }
+
+    for (let i = 0; i < nextState.completeTasks.length; i++) {
+      if (
+        nextState.completeTasks[i].id !== this.state.completeTasks[i].id ||
+        nextState.completeTasks[i].task !== this.state.completeTasks[i].task
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  }
   render() {
+    console.log("MAIN.JS RENDER");
     return (
       <div className="UnfulfilledTasks">
         <TaskInput
